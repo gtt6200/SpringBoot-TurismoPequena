@@ -1,17 +1,18 @@
 package com.turismopequena.turismopequena.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 
 
 @Entity
@@ -26,7 +27,7 @@ public class Viaje {
 	private int id_destino;
 	
 	@Column(name="fecha")
-	private Date fecha;
+	private LocalDate fecha;
 	
 	@Column(name="no_asientos")
 	private int no_asientos;
@@ -53,11 +54,11 @@ public class Viaje {
 		this.id_destino = id_destino;
 	}
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
