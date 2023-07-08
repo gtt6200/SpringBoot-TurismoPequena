@@ -1,8 +1,5 @@
 package com.turismopequena.turismopequena.entities;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,8 +24,8 @@ public class Destino {
 	@JoinColumn(name="id_estado")
 	private int id_estado;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="estado")
-	private List<Estado> estado;
+	@ManyToOne(fetch = FetchType.LAZY)
+	 private Estado estado;
 
 	public Long getId() {
 		return id;
@@ -54,13 +51,13 @@ public class Destino {
 		this.id_estado = id_estado;
 	}
 
-	public List<Estado> getEstado() {
-		return estado;
-	}
+	 public Estado getEstado() {
+	        return estado;
+	    }
 
-	public void setEstado(List<Estado> estado) {
-		this.estado = estado;
-	}
+	    public void setEstado(Estado estado) {
+	        this.estado = estado;
+	    }
 	
 	
 }

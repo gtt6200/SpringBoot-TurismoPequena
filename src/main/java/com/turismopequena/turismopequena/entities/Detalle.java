@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -40,11 +41,11 @@ public class Detalle {
 	private LocalDate fecha_venta;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="cliente")
-	private List<Cliente> cliente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cliente cliente;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="viaje")
-	private List<Viaje> viaje;
+    @ManyToOne(fetch = FetchType.LAZY)
+	private Viaje viaje;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="usuario")
 	private List<Usuario> usuario;
@@ -97,19 +98,19 @@ public class Detalle {
 		this.fecha_venta = fecha_venta;
 	}
 
-	public List<Cliente> getCliente() {
-		return cliente;
-	}
+	public Cliente getCliente() {
+        return cliente;
+    }
 
-	public void setCliente(List<Cliente> cliente) {
-		this.cliente = cliente;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public List<Viaje> getViaje() {
+	public Viaje getViaje() {
 		return viaje;
 	}
 
-	public void setViaje(List<Viaje> viaje) {
+	public void setViaje(Viaje viaje) {
 		this.viaje = viaje;
 	}
 

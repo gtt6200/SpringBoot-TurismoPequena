@@ -15,52 +15,51 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="hotel_destino")
 public class HotelDestino {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JoinColumn(name="id_hotel", unique=true, nullable=true)
-	private Long id_hotel;
-	
-	@JoinColumn(name="id_destino")
-	private int id_destino;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="destino")
-	private List<Destino> Destino;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="hotel")
-	private List<Hotel> hotel;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name="id_hotel", unique=true, nullable=true)
+    private Long id_hotel;
 
-	public Long getId_hotel() {
-		return id_hotel;
-	}
+    @JoinColumn(name="id_destino")
+    private int id_destino;
 
-	public void setId_hotel(Long id_hotel) {
-		this.id_hotel = id_hotel;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_hotel")
+    private List<Destino> destinos;
 
-	public int getId_destino() {
-		return id_destino;
-	}
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_hotel")
+    private List<Hotel> hoteles;
 
-	public void setId_destino(int id_destino) {
-		this.id_destino = id_destino;
-	}
+    public Long getId_hotel() {
+        return id_hotel;
+    }
 
-	public List<Destino> getDestino() {
-		return Destino;
-	}
+    public void setId_hotel(Long id_hotel) {
+        this.id_hotel = id_hotel;
+    }
 
-	public void setDestino(List<Destino> destino) {
-		Destino = destino;
-	}
+    public int getId_destino() {
+        return id_destino;
+    }
 
-	public List<Hotel> getHotel() {
-		return hotel;
-	}
+    public void setId_destino(int id_destino) {
+        this.id_destino = id_destino;
+    }
 
-	public void setHotel(List<Hotel> hotel) {
-		this.hotel = hotel;
-	}
-	
-	
+    public List<Destino> getDestinos() {
+        return destinos;
+    }
 
+    public void setDestinos(List<Destino> destinos) {
+        this.destinos = destinos;
+    }
+
+    public List<Hotel> getHoteles() {
+        return hoteles;
+    }
+
+    public void setHoteles(List<Hotel> hoteles) {
+        this.hoteles = hoteles;
+    }
 }

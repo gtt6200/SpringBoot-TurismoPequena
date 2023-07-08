@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -28,8 +29,9 @@ public class Estado {
 	@Column(name="nombre")
 	private String nombre;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="pais")
-	private List<Pais> pais;
+	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="pais")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Pais pais;
 
 	public Long getId() {
 		return id;
@@ -55,11 +57,11 @@ public class Estado {
 		this.nombre = nombre;
 	}
 
-	public List<Pais> getPais() {
+	public Pais getPais() {
 		return pais;
 	}
 
-	public void setPais(List<Pais> pais) {
+	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
 	

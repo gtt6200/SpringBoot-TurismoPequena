@@ -9,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -33,11 +34,11 @@ public class Asiento {
 	@Column(name="disponible")
 	private int disponible;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="viaje")
-	private List<Viaje> viaje;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="cliente")
-	private List<Cliente> cliente;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Viaje viaje;
+	//según chatgpt aquí tengo el error, anteriormente mapeadoby cliente y cambiando la relacion
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Cliente cliente;
 
 	public Long getId() {
 		return id;
@@ -79,20 +80,20 @@ public class Asiento {
 		this.disponible = disponible;
 	}
 
-	public List<Viaje> getViaje() {
+	public Viaje getViaje() {
 		return viaje;
 	}
 
-	public void setViaje(List<Viaje> viaje) {
+	public void setViaje(Viaje viaje) {
 		this.viaje = viaje;
 	}
 
-	public List<Cliente> getCliente() {
-		return cliente;
-	}
+	public Cliente getCliente() {
+        return cliente;
+    }
 
-	public void setCliente(List<Cliente> cliente) {
-		this.cliente = cliente;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
 }
