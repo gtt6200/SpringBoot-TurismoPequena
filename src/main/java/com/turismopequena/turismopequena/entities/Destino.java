@@ -25,7 +25,10 @@ public class Destino {
 	private int id_estado;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	 private Estado estado;
+	private Estado estado;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Viaje viaje;
 
 	public Long getId() {
 		return id;

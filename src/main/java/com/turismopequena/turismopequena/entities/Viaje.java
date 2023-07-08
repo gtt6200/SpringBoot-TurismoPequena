@@ -35,7 +35,7 @@ public class Viaje {
 	@Column(name="observaciones")
 	private String observaciones;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="destino")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="viaje")
 	private List<Destino> destino;
 
 	public Long getId() {
